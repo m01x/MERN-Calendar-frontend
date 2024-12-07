@@ -1,5 +1,5 @@
 
-import { useForm } from '../../hooks';
+import { useAuthStore, useForm } from '../../hooks';
 import './LoginPage.css';
 
 const loginFormFields = {
@@ -16,12 +16,14 @@ const registerFormFields = {
 
 export const LoginPage = () => {
 
+    const { startLogin } = useAuthStore();
+
     const { loginEmail, loginPassword, onInputChange:onLoginInputChange} = useForm( loginFormFields );
     const { registerName, registerPassword, registerPassword2, registerEmail, onInputChange:onRegisterInputChange} = useForm( registerFormFields );
     
     const loginSubmit = ( event ) => {
       event.preventDefault();
-      console.log(loginEmail, loginPassword)
+      startLogin({email: loginEmail, password: loginPassword});
     }
     //Nota, los name de los input, deben llamarse igual al nombre que tenemos en nuestro state
     

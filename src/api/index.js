@@ -1,0 +1,1 @@
+export { default as calendarApi }  from './calendarApi'; //De esta manera, le doy un nombre a esta exportacion por defecto
